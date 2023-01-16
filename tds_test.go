@@ -965,7 +965,6 @@ func TestConnectError(t *testing.T) {
 			t.Fatalf("Expected timeout error: %v", connErr)
 			return
 		}
-		t.Logf("%#v", ne.Err)
 	})
 }
 
