@@ -263,6 +263,7 @@ func GetConnParams() (*msdsn.Config, error) {
 		if err != io.EOF && err != nil {
 			return nil, err
 		}
+		// If file follows POSIX and file ends with LF, it's necessary to strip it out.
 		params, err := msdsn.Parse(strings.TrimSuffix(dsn, "\n"))
 		if err != nil {
 			return nil, err
