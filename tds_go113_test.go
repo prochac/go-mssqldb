@@ -20,6 +20,8 @@ func TestConnectError(t *testing.T) {
 		if params.Encryption == msdsn.EncryptionRequired {
 			t.Skip("Unable to test connection to IP for servers that expect encryption")
 		}
+		// clear instance name, so we don't tease SQL Server Browser.
+		params.Instance = ""
 
 		if params.Host == "." {
 			params.Host = "127.0.0.1"
@@ -51,8 +53,6 @@ func TestConnectError(t *testing.T) {
 		// port where nothing listens on. Port 666 is reserved for Doom multiplayer
 		// server, hopefully no-one runs one in CI or in development environment.
 		params.Port = 666
-		// clear instance name, so we don't tease SQL Server Browser.
-		params.Instance = ""
 
 		connErr := connAndPing(t, params)
 
