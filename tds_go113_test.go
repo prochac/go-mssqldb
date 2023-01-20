@@ -51,6 +51,8 @@ func TestConnectError(t *testing.T) {
 		// port where nothing listens on. Port 666 is reserved for Doom multiplayer
 		// server, hopefully no-one runs one in CI or in development environment.
 		params.Port = 666
+		// clear instance name, so we don't tease SQL Server Browser.
+		params.Instance = ""
 
 		connErr := connAndPing(t, params)
 
